@@ -30,13 +30,13 @@ A Social Media Center.
 * Home Tab
 <img src="assets/images/HOME.png">  
 
-# Messages Tab
+* Messages Tab
 <img src="assets/images/MSG.png"> 
 
-# Profile Tab
+* Profile Tab
 <img src="assets/images/PROFILE.png"> 
 
-# Notifications Tab
+* Notifications Tab
 <img src="assets/images/NOTIF.png"> 
 
 
