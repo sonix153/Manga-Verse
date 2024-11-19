@@ -34,7 +34,7 @@ A Social Media Center.
 <img src="assets/images/MSG.png"> 
 
 # Profile Tab
-<img src="assets/images/PROFILE.png}"> 
+<img src="assets/images/PROFILE.png"> 
 
 # Notifications Tab
 <img src="assets/images/NOTIF.png"> 
