@@ -13,26 +13,25 @@ const LoginScreen = () => {
     if (email && password) {
       Alert.alert(
         'Success',
-        'You are now logged in!',
+        'Welcome to MangaVerse!',
         [
           {
             text: 'OK',
             onPress: () => {
-              // Redirect to home screen after closing the popup
-              router.push('/home');
+              router.push('/home'); // Redirect to home screen
             },
           },
         ]
       );
     } else {
-      Alert.alert('Error', 'Please enter your email and password.');
+      Alert.alert('Error', 'Please fill in both fields.');
     }
   };
 
   const handleGoogleSignIn = () => {
     Alert.alert(
       'Success',
-      'You are now logged in with Google!',
+      'Logged in with Google!',
       [
         {
           text: 'OK',
@@ -47,9 +46,9 @@ const LoginScreen = () => {
   return (
     <View style={styles.container}>
       <Image source={require('../../assets/icons/logos.png')} style={styles.logo} />
-      <Text style={styles.title}>Login to ChromaShare</Text>
+      <Text style={styles.title}>Login to MangaVerse</Text>
 
-      {/* Use FormField component for email and password inputs */}
+      {/* Form Fields */}
       <FormField
         label="Email"
         placeholder="Enter your email"
@@ -64,8 +63,10 @@ const LoginScreen = () => {
         secureTextEntry={true}
       />
 
+      {/* Login Button */}
       <CustomButton title="Log In" onPress={handleLogin} />
 
+      {/* Google Sign-In */}
       <TouchableOpacity 
         style={styles.googleButton} 
         onPress={handleGoogleSignIn}
@@ -74,11 +75,12 @@ const LoginScreen = () => {
         <Text style={styles.googleButtonText}>Sign in with Google</Text>
       </TouchableOpacity>
 
+      {/* Create Account */}
       <TouchableOpacity 
         style={styles.createAccountContainer} 
-        onPress={() => router.push('/signup')}
+        onPress={() => router.push('auth/signup')}
       >
-        <Text style={styles.createAccountText}>Don't have an account? Create one</Text>
+        <Text style={styles.createAccountText}>Don't have an account? Create one!</Text>
       </TouchableOpacity>
     </View>
   );
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFDD0',
+    backgroundColor: '#FFFFFF', // White background for consistency
     padding: 20,
   },
   logo: {
@@ -97,14 +99,14 @@ const styles = StyleSheet.create({
     height: 150,
     marginBottom: 20,
     borderWidth: 2,
-    borderColor: '#4B3D3D',
+    borderColor: '#000000', // Black border for a consistent look
     borderRadius: 75,
     padding: 5,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: '#4B3D3D',
+    color: '#333333', // Dark gray title text
     marginBottom: 20,
   },
   googleButton: {
@@ -112,12 +114,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 15,
-    paddingHorizontal: 10,
     borderRadius: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     width: '100%',
     marginBottom: 20,
+    backgroundColor: '#2196F3', // Blue for Google sign-in button
   },
   googleIcon: {
     width: 20,
@@ -125,15 +127,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   googleButtonText: {
-    color: '#4B3D3D',
+    color: '#FFFFFF', // White text
     fontSize: 16,
   },
   createAccountContainer: {
     marginTop: 20,
   },
   createAccountText: {
-    color: '#4B3D3D',
+    color: '#8B0000', // Dark red text for consistency
     fontSize: 14,
+    textDecorationLine: 'underline',
   },
 });
 

@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Chromashare",
-    "slug": "Chromashare",
-    "scheme": "chromashare",
+    "name": "Mangaverse",
+    "slug": "Mangaverse",
+    "scheme": "mangaverse",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icons/icon.png",

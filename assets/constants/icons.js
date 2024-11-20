@@ -1,15 +1,15 @@
 
 
 import home from "../icons/home.png";
-import shirt from "../icons/shirt.png";
-import cart from "../icons/cart.png";
+import read from "../icons/comic.png";
+import profile from "../icons/user.png";
 import notif from "../icons/notif.png";
 
 
 export default {
  
   home,
-  shirt,
-  cart,
+read,
+  profile,
   notif,
  };

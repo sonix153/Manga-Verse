@@ -8,14 +8,17 @@ const IndexScreen = () => {
   return (
     <View style={styles.container}>
       <Image source={require('../assets/icons/logos.png')} style={styles.logo} />
-      <Text style={styles.welcomeText}>Welcome to ChromaShare!</Text>
+      
+      <Text style={styles.title}>MangaVerse</Text>
+      <Text style={styles.slogan}>Your portal to read manga on the go!</Text>
+      <Text style={styles.welcomeText}>Welcome!</Text>
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity 
           style={styles.button} 
           onPress={() => router.push('auth/login')}
         >
-          <Text style={styles.buttonText}>Log In</Text>
+          <Text style={styles.buttonText}>Start Reading</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
@@ -32,43 +35,54 @@ const IndexScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between', // Space between items
+    justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: '#FFFDD0', // Cream background color
-    paddingBottom: 40, // Add bottom padding
+    backgroundColor: '#FFFFFF', // White background
+    paddingBottom: 40,
   },
   logo: {
-    width: 150,
-    height: 150,
+    width: 200,
+    height: 200,
     marginVertical: 20,
-    borderWidth: 2, // Add outline
-    borderColor: '#4B3D3D', // Dark Brown color for outline
-    borderRadius: 75, // Make the outline circular
-    padding: 5, // Space between logo and outline
+    borderWidth: 2,
+    borderColor: '#000000', // Black outline
+    borderRadius: 100,
+    padding: 5,
+  },
+  title: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    color: '#333333', // Dark gray for the title
+    marginTop: -20,
+  },
+  slogan: {
+    fontSize: 16,
+    color: '#666666', // Lighter gray for the slogan
+    marginBottom: 10,
+    textAlign: 'center',
   },
   welcomeText: {
-    bottom:200,
     fontSize: 24,
     fontWeight: 'bold',
-    color: '#4B3D3D', // Dark Brown text color
+    color: '#444444', // Medium gray for welcome text
     marginBottom: 20,
-    textAlign: 'center', // Center the text
+    textAlign: 'center',
   },
   buttonContainer: {
-    flexDirection: 'row', // Align buttons side by side
+    flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '80%', // Width of the container
+    width: '80%',
   },
   button: {
-    backgroundColor: '#FFA500', // Warm Orange primary color
+    backgroundColor: '#4CAF50', // Green for "Start Reading"
     paddingVertical: 15,
     paddingHorizontal: 25,
-    borderRadius: 50, // Circular button
+    borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    marginRight: 10, // Space between buttons
-    elevation: 5, // Android shadow
-    shadowColor: '#000', // iOS shadow color
+    marginRight: 10,
+    elevation: 5,
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -77,20 +91,20 @@ const styles = StyleSheet.create({
     shadowRadius: 3.5,
   },
   buttonText: {
-    color: '#FFF', // White text color
+    color: '#FFFFFF', // White text for buttons
     fontSize: 16,
     fontWeight: 'bold',
   },
   createAccountButton: {
-    backgroundColor: '#FF6F61', // Coral color for the create account button
+    backgroundColor: '#2196F3', // Blue for "Create Account"
     paddingVertical: 15,
     paddingHorizontal: 25,
-    borderRadius: 50, // Circular button
+    borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
-    marginLeft: 10, // Space between buttons
-    elevation: 5, // Android shadow
-    shadowColor: '#000', // iOS shadow color
+    marginLeft: 10,
+    elevation: 5,
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -99,7 +113,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.5,
   },
   createAccountText: {
-    color: '#FFF', // White text color
+    color: '#FFFFFF', // White text for buttons
     fontSize: 16,
     fontWeight: 'bold',
   },

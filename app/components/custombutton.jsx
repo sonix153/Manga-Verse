@@ -1,4 +1,3 @@
-// components/CustomButton.jsx
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
@@ -12,25 +11,25 @@ const CustomButton = ({ title, onPress }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#FFA500', // Warm Orange primary color
+    backgroundColor: '#FF4500', // Vibrant orange-red
     paddingVertical: 15,
     paddingHorizontal: 25,
-    borderRadius: 50, // Circular button
+    borderRadius: 50,
     alignItems: 'center',
     justifyContent: 'center',
     width: '100%',
-    elevation: 5, // Android shadow
-    shadowColor: '#000', // iOS shadow color
+    marginBottom: 15,
+    elevation: 5,
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    marginBottom: 15,
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
   },
   buttonText: {
-    color: '#FFF', // White text color
+    color: '#FFF',
     fontSize: 16,
     fontWeight: 'bold',
   },

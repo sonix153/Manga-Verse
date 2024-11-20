@@ -12,7 +12,7 @@ const TabIcon = ({ icon, focused, onPress }) => {
           style={{
             width: 30,
             height: 30,
-            tintColor: focused ? '#FFA500' : '#4B3D3D', // Warm Orange for focused, Dark Brown for unfocused
+            tintColor: focused ? '#00BFFF' : '#A9A9A9', // Lighter blue for focused, gray for unfocused
           }}
         />
       </View>
@@ -31,7 +31,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ focused, onPress }) => (
               <TabIcon
-                icon={require('../../assets/icons/home.png')}
+                icon={require('../../assets/icons/home.png')} // Adjust the path
                 focused={focused}
                 onPress={onPress}
               />
@@ -39,13 +39,13 @@ const TabLayout = () => {
           }}
         />
         <Tabs.Screen
-          name="chat"
+          name="read"
           options={{
-            title: 'Messages',
+            title: 'Read',
             headerShown: false,
             tabBarIcon: ({ focused, onPress }) => (
               <TabIcon
-                icon={require('../../assets/icons/chat.png')}
+                icon={require('../../assets/icons/read.png')} // Adjust the path
                 focused={focused}
                 onPress={onPress}
               />
@@ -59,7 +59,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ focused, onPress }) => (
               <TabIcon
-                icon={require('../../assets/icons/notif.png')}
+                icon={require('../../assets/icons/notif.png')} // Adjust the path
                 focused={focused}
                 onPress={onPress}
               />
@@ -73,7 +73,7 @@ const TabLayout = () => {
             headerShown: false,
             tabBarIcon: ({ focused, onPress }) => (
               <TabIcon
-                icon={require('../../assets/icons/profile.png')}
+                icon={require('../../assets/icons/profile.png')} // Adjust the path
                 focused={focused}
                 onPress={onPress}
               />
@@ -90,22 +90,23 @@ export default TabLayout;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFDD0', // Cream background for consistency with the theme
+    backgroundColor: '#FFFFFF', // Keeping a clean white background for better contrast
   },
   tabBar: {
-    backgroundColor: '#FFFDD0', // Keep the tab bar cream to match the background
-    height: 70, // Height for better touch target
+    backgroundColor: '#E0FFFF', // Light cyan background for a fresh look
+    height: 70, // Increased height for better touch targets
     borderTopWidth: 1,
-    borderTopColor: '#4B3D3D', // Dark Brown for contrast
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: -2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
-    elevation: 5,
+    borderTopColor: '#A9A9A9', // Light gray for a clean, modern edge
+    shadowColor: '#00BFFF', // Blue shadow for a cooler effect
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    elevation: 10, // Increased elevation for a more prominent navbar
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
+    borderRadius: 30, // Rounded corners for a more modern feel
   },
   tabIconContainer: {
     alignItems: 'center',

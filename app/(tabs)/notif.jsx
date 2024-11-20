@@ -1,79 +1,100 @@
 import React from 'react';
-import { StyleSheet, View, Text, FlatList, Image } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 
-const notificationsData = [
-  { id: '1', friend: 'JJ Olatunji (KSI)', action: 'liked your photo', profileImage: require('../../assets/icons/p1.png') },
-  { id: '2', friend: 'Elon Musk', action: 'commented on your post', profileImage: require('../../assets/icons/p2.png') },
-  { id: '3', friend: 'Pete Davidson', action: 'started following you', profileImage: require('../../assets/icons/p3.png') },
-  { id: '4', friend: 'Kevin Heart', action: 'liked your photo', profileImage: require('../../assets/icons/p4.png') },
-  { id: '5', friend: 'Moe Lester', action: 'shared your post', profileImage: require('../../assets/icons/p5.png') },
-];
-
-const NotificationsScreen = () => {
-  const renderItem = ({ item }) => (
-    <View style={styles.notificationContainer}>
-      <Image source={item.profileImage} style={styles.profileImage} />
-      <View style={styles.notificationTextContainer}>
-        <Text style={styles.friendName}>{item.friend}</Text>
-        <Text style={styles.actionText}>{item.action}</Text>
-      </View>
-    </View>
-  );
-
+const Notif = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Notifications</Text>
-      <FlatList
-        data={notificationsData}
-        keyExtractor={(item) => item.id}
-        renderItem={renderItem}
-        contentContainerStyle={styles.notificationsList}
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      {/* Top Bar */}
+      <View style={styles.topBar}>
+        <Text style={styles.title}>Manga Notifications</Text>
+      </View>
+
+      {/* Notification List */}
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {/* Notification Items */}
+        <View style={styles.notification}>
+          <View style={styles.unreadIndicator} />
+          <Text style={styles.notificationText}>
+            <Text style={styles.boldText}>Continue reading "Naruto"</Text> - Your next chapter is waiting!
+          </Text>
+        </View>
+        <View style={styles.notification}>
+          <View style={styles.unreadIndicator} />
+          <Text style={styles.notificationText}>
+            <Text style={styles.boldText}>A new chapter has released for "One Punch Man"!</Text> Check it out now!
+          </Text>
+        </View>
+        <View style={styles.notification}>
+          <Text style={styles.notificationText}>
+            <Text style={styles.boldText}> "Attack on Titan"</Text> is updated with an exciting new chapter! Don't miss it!
+          </Text>
+        </View>
+        <View style={styles.notification}>
+          <Text style={styles.notificationText}>
+            <Text style={styles.boldText}> "Demon Slayer"</Text> is back with an all-new thrilling chapter!
+          </Text>
+        </View>
+        <View style={styles.notification}>
+          <Text style={styles.notificationText}>
+            Your bookmarked manga <Text style={styles.boldText}> "My Hero Academia"</Text> has a new chapter!
+          </Text>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
+
+export default Notif;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFDD0', // Cream background color
-    padding: 20,
+    backgroundColor: '#FFFDD0', // Light cream background for readability
+  },
+  topBar: {
+    backgroundColor: '#007BB5', // Blue color for the top bar
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    alignItems: 'center',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 10,
-    color: '#4B3D3D', // Dark Brown title color
+    color: '#FFF',
+    letterSpacing: 1,
+    textTransform: 'uppercase',
   },
-  notificationsList: {
-    paddingBottom: 60, // Space for the bottom
+  scrollContainer: {
+    paddingHorizontal: 20,
+    paddingVertical: 20,
   },
-  notificationContainer: {
-    flexDirection: 'row',
+  notification: {
+    backgroundColor: '#FFF', // White background for notifications
+    padding: 15,
+    marginBottom: 15,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3, // For Android shadow effect
+    flexDirection: 'row', // Align the indicator and text horizontally
     alignItems: 'center',
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd', // Light gray for separation
   },
-  profileImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    borderWidth: 2,
-    borderColor: '#4B3D3D', // Dark Brown for outline
-  },
-  notificationTextContainer: {
-    marginLeft: 10,
-  },
-  friendName: {
+  notificationText: {
     fontSize: 16,
-    fontWeight: 'bold',
-    color: '#000', // Black for friend name
+    fontWeight: '500',
+    color: '#333',
+    flex: 1,
   },
-  actionText: {
-    fontSize: 14,
-    color: '#666', // Gray for action text
+  boldText: {
+    fontWeight: 'bold',
+  },
+  unreadIndicator: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#FF0000', // Red dot to indicate unread
+    marginRight: 10, // Space between the dot and the text
   },
 });
-
-export default NotificationsScreen;

@@ -1,23 +1,49 @@
-import React from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Image, Alert, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
+import FormField from '../components/formfield'; // Import the FormField component
+import CustomButton from '../components/custombutton'; // Import the CustomButton
 
 const SignupScreen = () => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
+  const handleSignUp = () => {
+    if (email && password && confirmPassword) {
+      if (password === confirmPassword) {
+        Alert.alert(
+          'Success',
+          'You have successfully registered!',
+          [
+            {
+              text: 'OK',
+              onPress: () => {
+                router.push('/home'); // Redirect to home screen
+              },
+            },
+          ]
+        );
+      } else {
+        Alert.alert('Error', 'Passwords do not match.');
+      }
+    } else {
+      Alert.alert('Error', 'Please fill in all fields.');
+    }
+  };
 
   const handleGoogleSignUp = () => {
-    // Simulate a successful Google sign-up
     Alert.alert(
       'Success',
       'You have successfully registered with Google!',
       [
         {
-          text: 'OK', 
+          text: 'OK',
           onPress: () => {
-            // Redirect to home screen after closing the popup
-            router.push('/home'); 
-          }
-        }
+            router.push('/home');
+          },
+        },
       ]
     );
   };
@@ -27,43 +53,46 @@ const SignupScreen = () => {
       <Image source={require('../../assets/icons/logos.png')} style={styles.logo} />
       <Text style={styles.title}>Create an Account</Text>
 
-      <TextInput 
-        style={styles.input} 
-        placeholder="Email" 
-        keyboardType="email-address"
-        autoCapitalize="none"
+      {/* Form Fields */}
+      <FormField
+        label="Email"
+        placeholder="Enter your email"
+        value={email}
+        onChangeText={setEmail}
       />
-      <TextInput 
-        style={styles.input} 
-        placeholder="Password" 
-        secureTextEntry
+      <FormField
+        label="Password"
+        placeholder="Enter your password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry={true}
       />
-      <TextInput 
-        style={styles.input} 
-        placeholder="Confirm Password" 
-        secureTextEntry
+      <FormField
+        label="Confirm Password"
+        placeholder="Confirm your password"
+        value={confirmPassword}
+        onChangeText={setConfirmPassword}
+        secureTextEntry={true}
       />
 
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={() => console.log('Sign Up pressed')} // Replace with actual sign-up logic
-      >
-        <Text style={styles.buttonText}>Sign Up</Text>
-      </TouchableOpacity>
+      {/* Sign Up Button */}
+      <CustomButton title="Sign Up" onPress={handleSignUp} />
 
+      {/* Google Sign-Up */}
       <TouchableOpacity 
         style={styles.googleButton} 
         onPress={handleGoogleSignUp}
       >
         <Image source={require('../../assets/icons/google.png')} style={styles.googleIcon} />
-        <Text style={styles.googleButtonText}>Register through Google</Text>
+        <Text style={styles.googleButtonText}>Register with Google</Text>
       </TouchableOpacity>
 
+      {/* Login Redirect */}
       <TouchableOpacity 
-        style={styles.loginContainer} 
-        onPress={() => router.push('/login')}
+        style={styles.createAccountContainer} 
+        onPress={() => router.push('auth/login')}
       >
-        <Text style={styles.loginText}>Already have an account? Log in</Text>
+        <Text style={styles.createAccountText}>Already have an account? Log in</Text>
       </TouchableOpacity>
     </View>
   );
@@ -74,68 +103,35 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#FFFDD0', // Cream background color
+    backgroundColor: '#FFFFFF', // White background for consistency
     padding: 20,
   },
   logo: {
     width: 150,
     height: 150,
     marginBottom: 20,
-    borderWidth: 2, // Add outline
-    borderColor: '#4B3D3D', // Dark Brown color for outline
-    borderRadius: 75, // Make the outline circular
-    padding: 5, // Space between logo and outline
+    borderWidth: 2,
+    borderColor: '#000000', // Black border for consistency
+    borderRadius: 75,
+    padding: 5,
   },
   title: {
-    fontSize: 24,
+    fontSize: 26,
     fontWeight: 'bold',
-    color: '#4B3D3D', // Dark Brown text color
+    color: '#333333', // Dark gray title text
     marginBottom: 20,
-  },
-  input: {
-    width: '100%',
-    height: 50,
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: 25,
-    paddingHorizontal: 15,
-    marginBottom: 15,
-    backgroundColor: '#FFF',
-  },
-  button: {
-    backgroundColor: '#FFA500', // Warm Orange primary color
-    paddingVertical: 15,
-    paddingHorizontal: 25,
-    borderRadius: 50, // Circular button
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-    elevation: 5, // Android shadow
-    shadowColor: '#000', // iOS shadow color
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.5,
-    marginBottom: 15,
-  },
-  buttonText: {
-    color: '#FFF', // White text color
-    fontSize: 16,
-    fontWeight: 'bold',
   },
   googleButton: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     paddingVertical: 15,
-    paddingHorizontal: 10,
     borderRadius: 50,
     borderColor: '#ccc',
     borderWidth: 1,
     width: '100%',
     marginBottom: 20,
+    backgroundColor: '#2196F3', // Blue for Google sign-in button
   },
   googleIcon: {
     width: 20,
@@ -143,15 +139,16 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   googleButtonText: {
-    color: '#4B3D3D', // Dark Brown text color
+    color: '#FFFFFF', // White text
     fontSize: 16,
-    fontWeight: 'bold',
   },
-  loginContainer: {
+  createAccountContainer: {
     marginTop: 20,
   },
-  loginText: {
-    color: '#4B3D3D', // Dark Brown text color
+  createAccountText: {
+    color: '#8B0000', // Dark red text for consistency
+    fontSize: 14,
+    textDecorationLine: 'underline',
   },
 });
 
