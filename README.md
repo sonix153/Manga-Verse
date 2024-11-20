@@ -18,25 +18,25 @@ A Manga Mobile Reading App.
 * HTML, CSS and JS
 
 # Home Screen
-<img src="assets/images/onboard.png">  
+<img src="assets/images/ONBOARD.png">  
 
 # Log In Screen
-<img src="assets/images/login.png">  
+<img src="assets/images/LOGIN.png">  
 
 # Sign Up Screen
 <img src="assets/images/register.png">  
 
 # Tab Screens
 * Home Tab
-<img src="assets/images/home.png">  
+<img src="assets/images/HOME.png">  
 
 * Read Manga Tab
 <img src="assets/images/read.png"> 
 
 * Profile Tab
-<img src="assets/images/profile.png"> 
+<img src="assets/images/PROFILE.png"> 
 
 * Notifications Tab
-<img src="assets/images/notif.png"> 
+<img src="assets/images/NOTIF.png"> 
 
 
